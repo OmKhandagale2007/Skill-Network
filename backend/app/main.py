@@ -19,13 +19,6 @@ from .seed import seed_if_empty
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Create tables and seed demo data on startup
-    Base.metadata.create_all(bind=engine)
-    db = SessionLocal()
-    try:
-        seed_if_empty(db)
-    finally:
-        db.close()
     yield
 
 
