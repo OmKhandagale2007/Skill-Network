@@ -24,6 +24,10 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Skill Network API", lifespan=lifespan)
 
+@app.get("/")
+def root():
+    return {"message": "Skill Network API is running"}
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=CORS_ORIGINS,
